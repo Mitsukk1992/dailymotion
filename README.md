@@ -1,7 +1,7 @@
 ﻿# dailymotion
 Bonjour,
 
-Merci pour m'avoir permis d'effectuer votre test, voici comment le configurer :
+Merci de m'avoir permis d'effectuer votre test, voici comment le configurer :
 
 1.Installer la base de données.
   Créer une table "dailymotion" et importer le fichier sql ici présent.

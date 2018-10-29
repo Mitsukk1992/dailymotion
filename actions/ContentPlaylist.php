@@ -16,12 +16,24 @@ $relations_arr = array();
 
 if ($stmt->rowCount() > 0) {
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        array_push($relations_arr, "Playlist name : " . $row['playlist_name']);
-        array_push($relations_arr, "Playlist creation date : " . $row['created']);
-        array_push($relations_arr, json_decode($row['videos']));
+    $relations_arr = array();
+    $i = 1;
+ 
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+    {
+        $relations_arr[$row['playlist_name']][] = array
+        (
+            "video ". $i++ => array
+            (
+                "name_of_video" => $row['video_name'],
+                "thumbnail" => $row["thumbnail"],
+                "description" => $row["description"],
+                "posted" => $row["posted"],
+                "pseudo" => $row["pseudo"]
+            )
+        );
     }
-
+ 
     http_response_code(200);
     print_r(json_encode($relations_arr));
 
